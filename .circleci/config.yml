@@ -197,6 +197,7 @@ jobs:
     environment:
       SYSLOG: "syslog-ng-3.27.1"
     steps:
+      - go/install
       - run:
           name: "Publish on GitHub"
           command: |
