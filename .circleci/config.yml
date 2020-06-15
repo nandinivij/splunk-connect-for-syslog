@@ -53,7 +53,7 @@ tag: &tag
     - checkout
     - add_ssh_keys:
         fingerprints:
-          - "a2:4c:a9:9a:62:47:7e:6d:e8:d5:ae:2b:26:43:6f:25"
+          - "7b:22:03:b0:69:35:2f:59:8e:4a:cb:6c:6c:eb:38:ee"
     - checkout
     - run:
         name: TAG
