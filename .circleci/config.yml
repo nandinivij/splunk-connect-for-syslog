@@ -197,6 +197,9 @@ jobs:
     environment:
       SYSLOG: "syslog-ng-3.27.1"
     steps:
+      - attach_workspace:
+            at: /tmp/workspace
+      - checkout
       - go/install
       - run:
           name: "Publish on GitHub"
