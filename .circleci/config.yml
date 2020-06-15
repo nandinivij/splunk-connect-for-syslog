@@ -192,7 +192,42 @@ jobs:
             git push
 
   publish:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SYSLOG: "syslog-ng-3.27.1"
     steps:
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - attach_workspace:
+          at: /tmp/workspace
+      - checkout
+      - run:
+          name: Docker Login
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: BYOE Config
+          command: |
+            tar rvf /tmp/workspace/baremetal.tar -C package/etc .
+            tar rvf /tmp/workspace/baremetal.tar -C package/sbin entrypoint.sh
+      - run:
+          name: Build Docker
+          command: |
+            if [ -n "${CIRCLE_TAG}" ]; then VERSION=${CIRCLE_TAG}; else VERSION="$(./semtag getcurrent)"; fi
+            VERSION_DOCKER_MMP=$(echo  $VERSION | sed -n 's/v\([0-9]*\.[0-9]*\.[0-9]*\).*/\1/p')
+            echo ${VERSION} >package/VERSION
+            echo ${CIRCLE_SHA1}=${VERSION}
+            docker build --build-arg BRANCH=${SYSLOG} package -t splunk/scs:${CIRCLE_SHA1}
+            docker tag splunk/scs:${CIRCLE_SHA1} splunk/scs:${VERSION}
+            docker tag splunk/scs:${CIRCLE_SHA1} splunk/scs:${VERSION_DOCKER_MMP}
+            docker tag splunk/scs:${CIRCLE_SHA1} splunk/scs:${CIRCLE_SHA1:0:7}
+            docker push splunk/scs:${CIRCLE_SHA1}
+            docker push splunk/scs:${VERSION}
+            docker push splunk/scs:${VERSION_DOCKER_MMP}
+            docker push splunk/scs:${CIRCLE_SHA1:0:7}
+            docker save splunk/scs:${VERSION_DOCKER_MMP} | gzip -c > /tmp/workspace/oci_container.tar.gz
+      - go/install
       - run:
           name: "Publish on GitHub"
           command: |
