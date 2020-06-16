@@ -205,11 +205,12 @@ jobs:
           name: "Publish on GitHub"
           command: |
             go get -v -u github.com/tcnksm/ghr
+            git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Internal\]|\[Feature\]|\[Fix\]|\[Doc\]|\[Ci\]|\[Test\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])" >Body
             PATH=$PATH:/usr/local/go/bin
             if [ -n "${CIRCLE_TAG}" ]; then VERSION=${CIRCLE_TAG}; else VERSION="$(./semtag getcurrent)"; fi
             echo ${VERSION} >package/VERSION            
             [ "$(./semtag getfinal)" != "${CIRCLE_TAG}" ] && ISPRE="-prerelease" || ISPRE=""
-            $HOME/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -b test -c ${CIRCLE_SHA1} ${ISPRE} -delete ${VERSION} /tmp/workspace/
+            $HOME/go/bin/ghr -t -b "`cat Body`" ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -b test -c ${CIRCLE_SHA1} ${ISPRE} -delete ${VERSION} /tmp/workspace/
 
       - store_artifacts:
           path: /tmp/workspace/
