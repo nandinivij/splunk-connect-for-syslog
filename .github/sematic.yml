@@ -12,4 +12,4 @@ types:
   - revert
   - filterAdd
   - filterMod
-titleAndCommits: true
+commitsOnly: true
