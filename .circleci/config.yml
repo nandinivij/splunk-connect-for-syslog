@@ -204,9 +204,9 @@ jobs:
       - run:
             name: "Body"
             command: echo 'export bodyData=$(./bodyData)' >> $BASH_ENV
-#      - run:
-#          name: "Setup custom environment variables"
-#          command: echo $bodyData
+      - run:
+          name: "Setup custom environment variables"
+          command: echo $bodyData
       - run:
           name: "Publish on GitHub"
           command: |
