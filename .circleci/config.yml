@@ -201,9 +201,9 @@ jobs:
             at: /tmp/workspace
       - checkout
       - go/install
-#      - run:
-#            name: "Body"
-#            command: echo 'export bodyData=$(./bodyData)' >> $BASH_ENV
+      - run:
+            name: "Body"
+            command: echo 'export bodyData=$(./bodyData)' >> $BASH_ENV
 #      - run:
 #          name: "Setup custom environment variables"
 #          command: echo $bodyData
@@ -215,8 +215,8 @@ jobs:
             if [ -n "${CIRCLE_TAG}" ]; then VERSION=${CIRCLE_TAG}; else VERSION="$(./semtag getcurrent)"; fi
             echo ${VERSION} >package/VERSION            
             [ "$(./semtag getfinal)" != "${CIRCLE_TAG}" ] && ISPRE="-prerelease" || ISPRE=""
-            bodyData=$(./bodyData)
-            echo $bodyData
+  #bodyData=$(./bodyData)
+            echo ${bodyData}
             echo "test"
             $HOME/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -b test -c ${CIRCLE_SHA1} ${ISPRE} -delete ${VERSION} /tmp/workspace/
 
