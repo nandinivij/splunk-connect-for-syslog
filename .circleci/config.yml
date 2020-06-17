@@ -204,7 +204,7 @@ jobs:
       - run:
             name: Body
             command: |
-              export REL=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])")
+              echo "export REL=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])")" >> $BASH_ENV
               echo $REL
       - run:
           name: "Publish on GitHub"
