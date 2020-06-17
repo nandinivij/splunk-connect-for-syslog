@@ -85,6 +85,91 @@ docker_tag: &docker_tag
           docker pull splunk/scs:${CIRCLE_SHA1} 
           docker tag splunk/scs:${CIRCLE_SHA1} splunk/scs:${SEM_LEVEL}            
           docker push splunk/scs:${SEM_LEVEL}
+jobs:
+  test-sc4s-current-splunk-8-0:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SYSLOG: "syslog-ng-3.27.1"
+      SPLUNK_VERSION: "8.0.2"
+    <<: *test
+  test-sc4s-next-splunk-8-0:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SYSLOG: "master"
+      SPLUNK_VERSION: "8.0.2"
+    <<: *test
+  test-sc4s-current-splunk-7-3:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SYSLOG: "syslog-ng-3.27.1"
+      SPLUNK_VERSION: "7.3.4"
+    <<: *test
+  test-sc4s-current-splunk-7-2:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SYSLOG: "syslog-ng-3.27.1"
+      SPLUNK_VERSION: "7.2.9"
+    <<: *test
+
+  tag-alpha:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SEMTAG: "alpha"
+    <<: *tag
+  tag-beta:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SEMTAG: "beta"
+    <<: *tag
+  tag-candidate:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SEMTAG: "candidate"
+    <<: *tag
+  tag-final-major:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SEMTAG: "final -s major"
+    <<: *tag
+  tag-final-minor:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SEMTAG: "final -s minor"
+    <<: *tag
+  tag-final-patch:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SEMTAG: "final -s patch"
+    <<: *tag
+
+  docker-major:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SEM_LEVEL: "M"
+    <<: *docker_tag
+  docker-minor:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SEM_LEVEL: "MM"
+    <<: *docker_tag
+  docker-latest:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SEM_LEVEL: "latest"
+    <<: *docker_tag
 
   merge-beta-to-master:
     docker:
@@ -119,7 +204,6 @@ docker_tag: &docker_tag
       - run:
           name: "Setup custom"
           command: echo 'export SEL=$(git describe --tags --abbrev=0)' >> $BASH_ENV
-                   source $BASH_ENV
       - run:
           name: "Setup SEL"
           command: echo $SEL
