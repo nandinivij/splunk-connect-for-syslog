@@ -209,7 +209,7 @@ jobs:
           command: echo $SEL
       - run:
             name: "Body"
-            command: echo 'export REL=$(git log $SEL ..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])")' >> $BASH_ENV
+            command: echo 'export REL=$(git log ${SEL}..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])")' >> $BASH_ENV
       - run:
           name: "Setup custom environment variables"
           command: echo $REL
