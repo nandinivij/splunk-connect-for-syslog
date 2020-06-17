@@ -196,7 +196,6 @@ jobs:
       - image: circleci/python:3.7
     environment:
       SYSLOG: "syslog-ng-3.27.1"
-       BASH_ENV: /home/circleci/.bashrc
     steps:
       - attach_workspace:
             at: /tmp/workspace
@@ -206,7 +205,8 @@ jobs:
           name: "Publish on GitHub"
           command: |
             go get -v -u github.com/tcnksm/ghr
-            echo 'export COMMIT_TAG=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])")' >> ~/.bashrc
+            echo 'export COMMIT_TAG=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])")' >> $BASH_ENV
+            source $BASH_ENV
             PATH=$PATH:/usr/local/go/bin
             if [ -n "${CIRCLE_TAG}" ]; then VERSION=${CIRCLE_TAG}; else VERSION="$(./semtag getcurrent)"; fi
             echo ${VERSION} >package/VERSION            
