@@ -202,8 +202,14 @@ jobs:
       - checkout
       - go/install
       - run:
+          name: "Setup custom"
+          command: echo 'export SEL=$(git describe --tags --abbrev=0)' >> $BASH_ENV
+      - run:
+          name: "Setup SEL"
+          command: echo $SEL
+      - run:
             name: "Body"
-            command: echo 'export REL=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])")' >> $BASH_ENV
+            command: echo 'export REL=$(git log $SEL ..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])")' >> $BASH_ENV
       - run:
           name: "Setup custom environment variables"
           command: echo $REL
