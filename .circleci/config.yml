@@ -202,14 +202,8 @@ jobs:
       - checkout
       - go/install
       - run:
-          name: "Setup custom"
-          command: echo 'export SEL=$(git describe --tags --abbrev=0)' >> $BASH_ENV
-      - run:
-          name: "Setup SEL"
-          command: echo $SEL
-      - run:
             name: "Body"
-            command: bodyData=$(./bodyData)
+            command: echo 'export bodyData=$(./bodyData)' >> $BASH_ENV
       - run:
           name: "Setup custom environment variables"
           command: echo $bodyData
