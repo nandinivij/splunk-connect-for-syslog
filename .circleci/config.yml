@@ -204,8 +204,8 @@ jobs:
       - run:
             name: Body
             command: |
-              COMMIT_TAG=`git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])"`
-              echo $COMMIT_TAG
+              export REL=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])")
+              echo $REL
       - run:
           name: "Publish on GitHub"
           command: |
