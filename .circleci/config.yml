@@ -196,7 +196,6 @@ jobs:
       - image: circleci/python:3.7
     environment:
       SYSLOG: "syslog-ng-3.27.1"
-      environment:
        BASH_ENV: /home/circleci/.bashrc
     steps:
       - attach_workspace:
