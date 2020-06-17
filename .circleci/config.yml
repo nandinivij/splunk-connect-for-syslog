@@ -197,7 +197,7 @@ jobs:
     environment:
       SYSLOG: "syslog-ng-3.27.1"
       environment:
-       BASH_ENV: ~/.bashrc
+       BASH_ENV: /home/circleci/.bashrc
     steps:
       - attach_workspace:
             at: /tmp/workspace
