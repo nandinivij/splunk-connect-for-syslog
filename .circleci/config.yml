@@ -86,35 +86,6 @@ docker_tag: &docker_tag
           docker tag splunk/scs:${CIRCLE_SHA1} splunk/scs:${SEM_LEVEL}            
           docker push splunk/scs:${SEM_LEVEL}
 jobs:
-  test-sc4s-current-splunk-8-0:
-    docker:
-      - image: circleci/python:3.7
-    environment:
-      SYSLOG: "syslog-ng-3.27.1"
-      SPLUNK_VERSION: "8.0.2"
-    <<: *test
-  test-sc4s-next-splunk-8-0:
-    docker:
-      - image: circleci/python:3.7
-    environment:
-      SYSLOG: "master"
-      SPLUNK_VERSION: "8.0.2"
-    <<: *test
-  test-sc4s-current-splunk-7-3:
-    docker:
-      - image: circleci/python:3.7
-    environment:
-      SYSLOG: "syslog-ng-3.27.1"
-      SPLUNK_VERSION: "7.3.4"
-    <<: *test
-  test-sc4s-current-splunk-7-2:
-    docker:
-      - image: circleci/python:3.7
-    environment:
-      SYSLOG: "syslog-ng-3.27.1"
-      SPLUNK_VERSION: "7.2.9"
-    <<: *test
-
   tag-alpha:
     docker:
       - image: circleci/python:3.7
@@ -201,12 +172,12 @@ jobs:
             at: /tmp/workspace
       - checkout
       - go/install
-      - run:
-            name: "Body"
-            command: echo 'export bodyData=$(./bodyData)' >> $BASH_ENV
-      - run:
-          name: "Setup custom environment variables"
-          command: echo $bodyData
+#      - run:
+#            name: "Body"
+#            command: echo 'export bodyData=$(./bodyData)' >> $BASH_ENV
+#      - run:
+#          name: "Setup custom environment variables"
+#          command: echo $bodyData
       - run:
           name: "Publish on GitHub"
           command: |
