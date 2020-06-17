@@ -205,7 +205,7 @@ jobs:
           name: "Publish on GitHub"
           command: |
             go get -v -u github.com/tcnksm/ghr
-            export COMMIT_TAG=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])")>>$BASH_ENV
+            COMMIT_TAG=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])")
             source $BASH_ENV
             echo ${COMMIT_TAG}
             echo ${BASH_ENV}
