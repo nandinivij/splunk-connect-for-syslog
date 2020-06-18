@@ -374,9 +374,9 @@ function increase_version {
       __commitlist="$(git log --pretty=oneline | cat)"
     else
       #__commitlist="$(git log --pretty=oneline $finalversion... | cat)"
-      __commitlist+="What's New \n"
-      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[CI\])" $finalversion... | cat) \n"
-      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[FIX\])" $finalversion... | cat)"
+      __commitlist+="What\'s New" \n
+      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[CI\])" $finalversion... | cat)" \n
+      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[FIX\])" $finalversion... | cat)" \n
     fi
 
     # If we are forcing a bump, we add bump to the commit list
