@@ -201,12 +201,12 @@ jobs:
             at: /tmp/workspace
       - checkout
       - go/install
-#      - run:
-#            name: "Body"
-#            command: echo 'export DATA=$(./bodyData)' >> $BASH_ENV
-#      - run:
-#          name: "Setup custom environment variables"
-#          command: echo ${DATA}
+      - run:
+            name: "Body"
+            command: echo 'export DATA2=$(./bodyData)' >> $BASH_ENV
+      - run:
+          name: "Setup custom environment variables"
+          command: echo ${DATA2}
       - run:
           name: "Publish on GitHub"
           command: |
