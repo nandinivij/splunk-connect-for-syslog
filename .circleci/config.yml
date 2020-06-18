@@ -218,7 +218,7 @@ jobs:
             DATA=$(./bodyData)
             echo $DATA
             echo "test"
-            $HOME/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -b `git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])"` -c ${CIRCLE_SHA1} ${ISPRE} -delete ${VERSION} /tmp/workspace/
+            $HOME/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -b test -c ${CIRCLE_SHA1} ${ISPRE} -delete ${VERSION} /tmp/workspace/
 
       - store_artifacts:
           path: /tmp/workspace/
