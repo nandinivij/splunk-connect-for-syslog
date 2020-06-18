@@ -203,7 +203,7 @@ jobs:
       - go/install
       - run:
             name: "Body"
-            command: echo 'export DATA2="FOO"' >> $BASH_ENV
+            command: echo 'export DATA2=$(./bodyData)' >> $BASH_ENV
 #            command: echo 'export DATA2=$(./bodyData)' >> $BASH_ENV
 
       - run:
