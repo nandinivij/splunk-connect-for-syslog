@@ -29,7 +29,7 @@ test: &test
     - run:
         name: test
         command: |
-          docker-compose -f tests/docker-compose-ci.yml build 
+          docker-compose -f tests/docker-compose-ci.yml build
           docker-compose -f tests/docker-compose-ci.yml up -d splunk
           sleep 90
           docker-compose -f tests/docker-compose-ci.yml up --abort-on-container-exit
@@ -54,6 +54,7 @@ tag: &tag
     - add_ssh_keys:
         fingerprints:
           - "7b:22:03:b0:69:35:2f:59:8e:4a:cb:6c:6c:eb:38:ee"
+          #	# - "7c:e9:cc:8d:8e:4d:9c:17:1d:e3:96:23:ce:bd:a4:c3"
     - checkout
     - run:
         name: TAG
@@ -82,8 +83,8 @@ docker_tag: &docker_tag
           [ "$SEM_LEVEL" = "M" ] && TAG=$VERSION_DOCKER_M
           [ "$SEM_LEVEL" = "MM" ] && TAG=$VERSION_DOCKER_MM
           [ "$SEM_LEVEL" = "latest" ] && TAG=latest
-          docker pull splunk/scs:${CIRCLE_SHA1} 
-          docker tag splunk/scs:${CIRCLE_SHA1} splunk/scs:${SEM_LEVEL}            
+          docker pull splunk/scs:${CIRCLE_SHA1}
+          docker tag splunk/scs:${CIRCLE_SHA1} splunk/scs:${SEM_LEVEL}
           docker push splunk/scs:${SEM_LEVEL}
 jobs:
   test-sc4s-current-splunk-8-0:
@@ -197,13 +198,40 @@ jobs:
     environment:
       SYSLOG: "syslog-ng-3.27.1"
     steps:
+ #     - setup_remote_docker:
+ #         docker_layer_caching: true
       - attach_workspace:
             at: /tmp/workspace
       - checkout
+#      - run:
+#          name: Docker Login
+#          command: |
+#            docker login -u $DOCKER_USER -p $DOCKER_PASS
+#      - run:
+#          name: BYOE Config
+#          command: |
+#            tar rvf /tmp/workspace/baremetal.tar -C package/etc .
+#            tar rvf /tmp/workspace/baremetal.tar -C package/sbin entrypoint.sh
+#      - run:
+#          name: Build Docker
+#          command: |
+#            if [ -n "${CIRCLE_TAG}" ]; then VERSION=${CIRCLE_TAG}; else VERSION="$(./semtag getcurrent)"; fi
+#            VERSION_DOCKER_MMP=$(echo  $VERSION | sed -n 's/v\([0-9]*\.[0-9]*\.[0-9]*\).*/\1/p')
+#            echo ${VERSION} >package/VERSION
+#            echo ${CIRCLE_SHA1}=${VERSION}
+#            docker build --build-arg BRANCH=${SYSLOG} package -t splunk/scs:${CIRCLE_SHA1}
+#            docker tag splunk/scs:${CIRCLE_SHA1} splunk/scs:${VERSION}
+#            docker tag splunk/scs:${CIRCLE_SHA1} splunk/scs:${VERSION_DOCKER_MMP}
+#            docker tag splunk/scs:${CIRCLE_SHA1} splunk/scs:${CIRCLE_SHA1:0:7}
+#            docker push splunk/scs:${CIRCLE_SHA1}
+#            docker push splunk/scs:${VERSION}
+#            docker push splunk/scs:${VERSION_DOCKER_MMP}
+#            docker push splunk/scs:${CIRCLE_SHA1:0:7}
+#            docker save splunk/scs:${VERSION_DOCKER_MMP} | gzip -c > /tmp/workspace/oci_container.tar.gz
       - go/install
       - run:
             name: "Body"
-            command: echo 'export DATA2=$(./bodyData)' >> $BASH_ENV
+            command: echo 'export DATA2="FOO"' >> $BASH_ENV
 #            command: echo 'export DATA2=$(./bodyData)' >> $BASH_ENV
 
       - run:
@@ -215,7 +243,7 @@ jobs:
             go get -v -u github.com/tcnksm/ghr
             PATH=$PATH:/usr/local/go/bin
             if [ -n "${CIRCLE_TAG}" ]; then VERSION=${CIRCLE_TAG}; else VERSION="$(./semtag getcurrent)"; fi
-            echo ${VERSION} >package/VERSION            
+            echo ${VERSION} >package/VERSION
             [ "$(./semtag getfinal)" != "${CIRCLE_TAG}" ] && ISPRE="-prerelease" || ISPRE=""
             DATA=$(./bodyData)
             echo $DATA
