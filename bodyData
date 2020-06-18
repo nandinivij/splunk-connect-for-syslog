@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-echo "hello"
-echo "hello2"
+echo "Release Notes "
 echo "`git log $(git describe --abbrev=0 --tags $(git describe --abbrev=0)^)...$(git describe --abbrev=0) --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])"`"
 #echo "`git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" -i -E --grep="^(\[Ci\]|\[Fix\]\[Doc\]|\[Test\]|\[Feat\]|\[Revert\]|\[FilterAdd\]|\[FilterMod\])"`"
