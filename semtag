@@ -372,9 +372,9 @@ function increase_version {
     fi
     local __commitlist
     if [ "$finalversion" == "$FIRST_VERSION" ] || [ "$hasversiontag" != "true" ]; then
-      #__commitlist="$(git log --pretty=oneline | cat)"
+      __commitlist="$(git log --pretty=oneline | cat)"
     else
-      __commitlist="$(git log --pretty=oneline $finalversion... | cat)"
+      #__commitlist="$(git log --pretty=oneline $finalversion... | cat)"
       __commitlist="$(git log --pretty=format:"%s" -i -E --grep="^(\[CI\]|\[FIX\]|\[DOC\]|\[TEST\]|\[FEATURE\]|\[REVERT\]|\[FILTERADD\]|\[FILTERMOD\])" $finalversion... | cat)"
     fi
 
