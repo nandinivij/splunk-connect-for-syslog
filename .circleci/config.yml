@@ -217,8 +217,7 @@ jobs:
             [ "$(./semtag getfinal)" != "${CIRCLE_TAG}" ] && ISPRE="-prerelease" || ISPRE=""
             DATA=$(./bodyData)
             echo $DATA
-            echo "test"
-            $HOME/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -b test -c ${CIRCLE_SHA1} ${ISPRE} -delete ${VERSION} /tmp/workspace/
+            $HOME/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -b $DATA -c ${CIRCLE_SHA1} ${ISPRE} -delete ${VERSION} /tmp/workspace/
 
       - store_artifacts:
           path: /tmp/workspace/
