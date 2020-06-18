@@ -229,6 +229,9 @@ jobs:
 #            docker push splunk/scs:${VERSION_DOCKER_MMP}
 #            docker push splunk/scs:${CIRCLE_SHA1:0:7}
 #            docker save splunk/scs:${VERSION_DOCKER_MMP} | gzip -c > /tmp/workspace/oci_container.tar.gz
+#            DATA=$(./bodyData)
+#            echo $DATA
+#            $HOME/go/bin/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -b "$DATA" -c ${CIRCLE_SHA1} ${ISPRE} -delete ${VERSION} /tmp/workspace/
       - go/install
       - run:
             name: "Body"
