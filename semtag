@@ -345,6 +345,11 @@ function bump_version {
   eval "$1=$__resultversion"
 }
 
+function releaseNotes{
+  local __releaseNotes
+  __releaseNotes+="$(git log --pretty=format:"%s" -i -E --grep="^(\[CI\])" $finalversion... | cat)"
+  __releaseNotes+="$(git log --pretty=format:"%s" -i -E --grep="^(\[CI\])" $finalversion... | cat)"
+}
 function increase_version {
   local __version=
 
@@ -375,7 +380,7 @@ function increase_version {
       __commitlist="$(git log --pretty=oneline | cat)"
     else
       #__commitlist="$(git log --pretty=oneline $finalversion... | cat)"
-      __commitlist="$(git log --pretty=format:"%s" -i -E --grep="^(\[CI\])" $finalversion... | cat)"
+      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[CI\])" $finalversion... | cat)"
       __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[FIX\])" $finalversion... | cat)"
     fi
 
