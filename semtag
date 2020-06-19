@@ -380,12 +380,12 @@ function increase_version {
       declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
       do
-        __columnNotes=()
+        columnNotes=()
         while IFS= read -r line; do
-            __columnNotes+=( "$line" )
+            columnNotes+=( "$line" )
         done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])"$finalversion... |cat) )
         __commitlist+="[$col]"$'\n'
-        for i in "${__columnNotes[@]}"
+        for i in "${columnNotes[@]}"
         do
           IFS=' '
           echo "In loop"
