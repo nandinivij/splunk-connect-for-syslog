@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 
-      __commitlist="What's New "$'\n'
-      declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
+     declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
       do
-        __columnNotes=()
-        while IFS= read -r line; do
-            __columnNotes+=( "$line" )
+        columnNotes=()
+        while IFS= read -r line;
+        do
+          echo "In loop"
+          columnNotes+=( "$line" )
         done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])"$finalversion... |cat) )
         __commitlist+="[$col]"$'\n'
-        for i in "${__columnNotes[@]}"
+        for i in "${columnNotes[@]}"
         do
           IFS=' '
+          echo "In loop"
           read -ra my_array2 <<< $i
           __commitlist+="${my_array2[1]}"$'\n'
         done
