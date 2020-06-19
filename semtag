@@ -383,14 +383,14 @@ function increase_version {
         while IFS= read -r line; do
             __columnNotes+=( "$line" )
         done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])"$finalversion...... |cat) )
-        all_ci="[$col]"$'\n'
+        __commitlist="[$col]"$'\n'
         for i in "${__columnNotes[@]}"
         do
           IFS=' '
           read -ra my_array2 <<< $i
           __commitlist+="${my_array2[1]}"$'\n'
         done
-        echo $all_ci
+        echo __commitlist
       done
     fi
 
