@@ -390,7 +390,7 @@ function increase_version {
           read -ra my_array2 <<< $i
           __commitlist+="${my_array2[1]}"$'\n'
         done
-        echo __commitlist
+        echo $__commitlist
       done
     fi
 
