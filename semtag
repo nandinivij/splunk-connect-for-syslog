@@ -388,6 +388,7 @@ function increase_version {
         for i in "${__columnNotes[@]}"
         do
           IFS=' '
+          echo "In loop"
           read -ra my_array2 <<< $i
           __commitlist+="${my_array2[1]}"$'\n'
         done
