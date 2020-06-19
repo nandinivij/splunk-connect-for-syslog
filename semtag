@@ -376,6 +376,7 @@ function increase_version {
     else
       #__commitlist="$(git log --pretty=oneline $finalversion... | cat)"
       # for release notes
+      __commitlist="What's New "$'\n'
       declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
       do
@@ -383,7 +384,7 @@ function increase_version {
         while IFS= read -r line; do
             __columnNotes+=( "$line" )
         done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])"$finalversion...... |cat) )
-        __commitlist="[$col]"$'\n'
+        __commitlist+="[$col]"$'\n'
         for i in "${__columnNotes[@]}"
         do
           IFS=' '
