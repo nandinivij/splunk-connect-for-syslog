@@ -388,6 +388,7 @@ function increase_version {
           ci_var+=$row $'\n'
         fi
       done
+      __commitlist+=$ci_var
 #      ci_var="$(git log --pretty=format:"%s" -i -E --grep="^(\[CI\])" $finalversion... | cat)"$'\n'
 #      fix_var="$(git log --pretty=format:"%s" -i -E --grep="^(\[FIX\])" $finalversion... | cat)"$'\n'
 #
