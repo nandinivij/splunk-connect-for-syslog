@@ -344,6 +344,7 @@ function bump_version {
 
   eval "$1=$__resultversion"
 }
+
 function increase_version {
   local __version=
 
@@ -371,37 +372,9 @@ function increase_version {
     fi
     local __commitlist
     if [ "$finalversion" == "$FIRST_VERSION" ] || [ "$hasversiontag" != "true" ]; then
-      __commitlist+="What's New"$'\n'
-      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[CI\])" $finalversion... | cat)"$'\n'
-      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[FIX\])" $finalversion... | cat)"$'\n'
-      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[DOC\])" $finalversion... | cat)"$'\n'
-      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[TEST\])" $finalversion... | cat)"$'\n'
-      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[FEATURE\])" $finalversion... | cat)"$'\n'
-      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[REVERT\])" $finalversion... | cat)"$'\n'
-      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[FILTERADD\])" $finalversion... | cat)"$'\n'
-      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[FILTERMOD\])" $finalversion... | cat)"$'\n'
+      __commitlist="$(git log --pretty=oneline | cat)"
     else
-      __commitlist+="What's New"$'\n'
-      __commitAll+="$(git log --pretty=format:"%s" -i -E --grep="^(\[CI\]|\[FIX\]|\[DOC\]|\[TEST\]|\[FEATURE\]|\[REVERT\]|\[FILTERADD\]|\[FILTERMOD\])" $finalversion... | cat)"$'\n'
-      for row in __commitAll; do
-        if [[ row = \[CI\]* ]] ; then
-          ci_var+=$row $'\n'
-        fi
-      done
-      __commitlist+=$ci_var
-#      ci_var="$(git log --pretty=format:"%s" -i -E --grep="^(\[CI\])" $finalversion... | cat)"$'\n'
-#      fix_var="$(git log --pretty=format:"%s" -i -E --grep="^(\[FIX\])" $finalversion... | cat)"$'\n'
-#
-#      if [ -z "$ci_var" ]
-#        then
-#          __commitlist+="$ci_var"$'\n'
-
-#      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[DOC\])" $finalversion... | cat)"$'\n'
-#      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[TEST\])" $finalversion... | cat)"$'\n'
-#      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[FEATURE\])" $finalversion... | cat)"$'\n'
-#      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[REVERT\])" $finalversion... | cat)"$'\n'
-#      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[FILTERADD\])" $finalversion... | cat)"$'\n'
-#      __commitlist+="$(git log --pretty=format:"%s" -i -E --grep="^(\[FILTERMOD\])" $finalversion... | cat)"$'\n'
+      __commitlist="$(git log --pretty=oneline $finalversion... | cat)"
     fi
 
     # If we are forcing a bump, we add bump to the commit list
