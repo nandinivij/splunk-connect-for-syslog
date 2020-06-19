@@ -371,6 +371,7 @@ function increase_version {
       check_git_dirty_status
     fi
     local __commitlist
+    local columnNotes
     if [ "$finalversion" == "$FIRST_VERSION" ] || [ "$hasversiontag" != "true" ]; then
       __commitlist="$(git log --pretty=oneline | cat)"
     else
