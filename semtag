@@ -376,7 +376,7 @@ function increase_version {
       __commitlist="$(git log --pretty=oneline | cat)"
     else
       #__commitlist="$(git log --pretty=oneline $finalversion... | cat)"
-      # For Release Notes Formatting 
+      # For Release Notes Formatting
       __commitlist="What's New "$'\n'
       declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
