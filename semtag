@@ -377,25 +377,28 @@ function increase_version {
     else
       #__commitlist="$(git log --pretty=oneline $finalversion... | cat)"
       # For Release Notes Formatting
-      __commitlist="What's New "$'\n'
+            __commitlist="What's New "$'\n'
       declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
       do
+        echo $finalversion
         columnNotes=()
         while IFS= read -r line;
         do
           columnNotes+=( "$line" )
         done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" $finalversion... |cat) )
         if [ -n "$columnNotes" ]; then
+          #echo "here"
           __commitlist+="[$col]"$'\n'
           for i in "${columnNotes[@]}"
           do
             IFS=' '
             read -ra my_array2 <<< $i
-            __commitlist+="${my_array2[1]}"$'\n'
+            __commitlist+="${my_array2[@]:1}"$'\n'
           done
         fi
       done
+      echo $__commitlist
     fi
 
     # If we are forcing a bump, we add bump to the commit list

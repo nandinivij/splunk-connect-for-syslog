@@ -4,15 +4,15 @@
       declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
       do
-        echo $col
+        #echo $col
         columnNotes=()
         while IFS= read -r line;
         do
           columnNotes+=( "$line" )
         done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" v1.22.0...) )
-        echo $columnNotes
+        #echo $columnNotes
         if [ -n "$columnNotes" ]; then
-          echo "here"
+          #echo "here"
           __commitlist+="[$col]"$'\n'
           for i in "${columnNotes[@]}"
           do
