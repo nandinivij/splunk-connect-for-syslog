@@ -344,6 +344,7 @@ function bump_version {
 
   eval "$1=$__resultversion"
 }
+
 function increase_version {
   local __version=
 
