@@ -1,60 +1,59 @@
 #!/usr/bin/env bash
 
 
-      __commitlist2="$(git log --pretty=oneline v1.22.4... | cat)"$'\n'
-      #__commitlist2="$(git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" v1.22.4... |cat)"$'\n'
+      __commitlist2="$(git log --pretty=oneline v2.0.1... | cat)"$'\n'
 
-      # For Release Notes Formatting test without tag
+
       __commitlist="What's New "$'\n'
       declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
       do
-        #echo $col
+        tag=0
         columnNotes=()
         while IFS= read -r line;
         do
           columnNotes+=( "$line" )
-        done < <( (git log --pretty=oneline:"%s" -i -E --grep="^(\[$col\])" v2.0.0... |cat) )
-        #echo $columnNotes
+        done < <( (git log --pretty=oneline:"%s" -i -E --grep="^(\[$col\])" v2.0.1... |cat) )
         if [ -n "$columnNotes" ]; then
-          #echo "here"
-          __commitlist+="[$col]"$'\n'
           for i in "${columnNotes[@]}"
           do
             IFS=' '
             read -ra my_array2 <<< $i
-            #echo Hi "${my_array2[@]:1}"
             if [[ ${my_array2[@]:1} = *[!\ ]* ]]; then
+              if [ "$tag" -eq 0 ]; then
+                __commitlist+="[$col]"$'\n'
+                tag=1
+              fi
               __commitlist+="${my_array2[@]:1}"$'\n'
             fi
           done
         fi
       done
       echo $__commitlist
-      echo $__commitlist2
-
-#      __commitlist="What's New "$'\n'
-#      declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
-#      for col in ${ReleaseColumn[@]};
-#      do
-#        #echo $col
-#        columnNotes=()
-#        while IFS= read -r line;
-#        do
-#          columnNotes+=( "$line" )
-#        done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" v1.22.0...) )
-#        #echo $columnNotes
-#        if [ -n "$columnNotes" ]; then
-#          #echo "here"
-#          __commitlist+="[$col]"$'\n'
-#          for i in "${columnNotes[@]}"
-#          do
-#            IFS=' '
-#            read -ra my_array2 <<< $i
-#            __commitlist+="${my_array2[@]:1}"$'\n'
-#          done
-#        fi
-#      done
+     echo $__commitlist2
+#
+##      __commitlist="What's New "$'\n'
+##      declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
+##      for col in ${ReleaseColumn[@]};
+##      do
+##        #echo $col
+##        columnNotes=()
+##        while IFS= read -r line;
+##        do
+##          columnNotes+=( "$line" )
+##        done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" v1.22.0...) )
+##        #echo $columnNotes
+##        if [ -n "$columnNotes" ]; then
+##          #echo "here"
+##          __commitlist+="[$col]"$'\n'
+##          for i in "${columnNotes[@]}"
+##          do
+##            IFS=' '
+##            read -ra my_array2 <<< $i
+##            __commitlist+="${my_array2[@]:1}"$'\n'
+##          done
+##        fi
+##      done
 #      echo $__commitlist
 # Declare an array of string with type
 #declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
