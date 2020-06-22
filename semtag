@@ -379,6 +379,7 @@ function increase_version {
       declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
       do
+        echo "if commit"
         echo $finalversion
         columnNotes=()
         while IFS= read -r line;
@@ -403,6 +404,7 @@ function increase_version {
       declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
       do
+        echo "else commit"
         echo $finalversion
         columnNotes=()
         while IFS= read -r line;
