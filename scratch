@@ -11,7 +11,7 @@
         while IFS= read -r line;
         do
           columnNotes+=( "$line" )
-        done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" v1.21.0... |cat) )
+        done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" v1.22.0... |cat) )
         if [ -n "$columnNotes" ]; then
           #echo "here"
           __commitlist+="[$col]"$'\n'
