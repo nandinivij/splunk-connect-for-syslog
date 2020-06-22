@@ -14,7 +14,7 @@
         while IFS= read -r line;
         do
           columnNotes+=( "$line" )
-        done < <( (git log --pretty=oneline:"%s" -i -E --grep="^(\[$col\])" v1.22.4... |cat) )
+        done < <( (git log --pretty=oneline:"%s" -i -E --grep="^(\[$col\])" v2.0.0... |cat) )
         #echo $columnNotes
         if [ -n "$columnNotes" ]; then
           #echo "here"
@@ -23,7 +23,7 @@
           do
             IFS=' '
             read -ra my_array2 <<< $i
-            echo Hi "${my_array2[@]:1}"
+            #echo Hi "${my_array2[@]:1}"
             if [[ ${my_array2[@]:1} = *[!\ ]* ]]; then
               __commitlist+="${my_array2[@]:1}"$'\n'
             fi
