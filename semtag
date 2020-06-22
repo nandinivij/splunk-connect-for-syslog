@@ -385,7 +385,7 @@ function increase_version {
         while IFS= read -r line;
         do
           columnNotes+=( "$line" )
-        done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" |cat) )
+        done < <( (git log --pretty=oneline:"%s" -i -E --grep="^(\[$col\])" |cat) )
         if [ -n "$columnNotes" ]; then
           #echo "here"
           __commitlist+="[$col]"$'\n'
@@ -409,7 +409,7 @@ function increase_version {
         while IFS= read -r line;
         do
           columnNotes+=( "$line" )
-        done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" $finalversion... |cat) )
+        done < <( (git log --pretty=oneline:"%s" -i -E --grep="^(\[$col\])" $finalversion... |cat) )
         if [ -n "$columnNotes" ]; then
           #echo "here"
           __commitlist+="[$col]"$'\n'
