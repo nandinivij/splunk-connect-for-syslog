@@ -23,7 +23,8 @@
           do
             IFS=' '
             read -ra my_array2 <<< $i
-            if [ -n "${my_array2[@]:1}" ]; then
+            echo Hi "${my_array2[@]:1}"
+            if [[ ${my_array2[@]:1} = *[!\ ]* ]]; then
               __commitlist+="${my_array2[@]:1}"$'\n'
             fi
           done
