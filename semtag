@@ -344,6 +344,33 @@ function bump_version {
 
   eval "$1=$__resultversion"
 }
+function release_notes_gen () {
+__commitlist="What's New "$'\n'
+declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
+for col in ${ReleaseColumn[@]};
+  do
+    tag=0
+    columnNotes=()
+    while IFS= read -r line;
+    do
+      columnNotes+=( "$line" )
+    done < <( (git log --pretty=oneline:"%s" -i -E --grep="^(\[$col\])" $finalversion... |cat) )
+    if [ -n "$columnNotes" ]; then
+      for i in "${columnNotes[@]}"
+      do
+        IFS=' '
+        read -ra my_array2 <<< $i
+        if [[ ${my_array2[@]:1} = *[!\ ]* ]]; then
+          if [ "$tag" -eq 0 ]; then
+            __commitlist+="[$col]"$'\n'
+            tag=1
+          fi
+          __commitlist+="${my_array2[@]:1}"$'\n'
+        fi
+      done
+    fi
+  done
+}
 
 function increase_version {
   local __version=
@@ -370,7 +397,7 @@ function increase_version {
     if [ "$forcetag" == "false" ]; then
       check_git_dirty_status
     fi
-    local __commitlist
+    __commitlist
     local columnNotes
     if [ "$finalversion" == "$FIRST_VERSION" ] || [ "$hasversiontag" != "true" ]; then
       #__commitlist="$(git log --pretty=oneline | cat)"
@@ -404,31 +431,7 @@ function increase_version {
     else
       #__commitlist="$(git log --pretty=oneline $finalversion... | cat)"
       # For Release Notes Formatting
-      __commitlist="What's New "$'\n'
-      declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
-      for col in ${ReleaseColumn[@]};
-      do
-        tag=0
-        columnNotes=()
-        while IFS= read -r line;
-        do
-          columnNotes+=( "$line" )
-        done < <( (git log --pretty=oneline:"%s" -i -E --grep="^(\[$col\])" $finalversion... |cat) )
-        if [ -n "$columnNotes" ]; then
-          for i in "${columnNotes[@]}"
-          do
-            IFS=' '
-            read -ra my_array2 <<< $i
-            if [[ ${my_array2[@]:1} = *[!\ ]* ]]; then
-              if [ "$tag" -eq 0 ]; then
-                __commitlist+="[$col]"$'\n'
-                tag=1
-              fi
-              __commitlist+="${my_array2[@]:1}"$'\n'
-            fi
-          done
-        fi
-      done
+      release_notes_gen
       echo $__commitlist
     fi
 
