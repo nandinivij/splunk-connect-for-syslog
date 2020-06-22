@@ -372,7 +372,7 @@ function increase_version {
     local __commitlist
     local columnNotes
     #__commitlist="$(git log --pretty=oneline | cat)"
-    # For Release Notes Formatting
+    # ---Added For Release Notes Formatting
     declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
     for col in ${ReleaseColumn[@]};
     do
@@ -405,6 +405,7 @@ function increase_version {
         done
       fi
     done
+    #------
     # If we are forcing a bump, we add bump to the commit list
     if [[ -z $__commitlist && "$forcetag" == "true" ]]; then
       __commitlist="bump"
