@@ -377,7 +377,6 @@ function increase_version {
     for col in ${ReleaseColumn[@]};
     do
       tag=0
-
       if [ "$finalversion" == "$FIRST_VERSION" ] || [ "$hasversiontag" != "true" ]; then
         columnNotes=()
         while IFS= read -r line;
