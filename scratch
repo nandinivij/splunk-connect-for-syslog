@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
 
-      #__commitlist="$(git log --pretty=oneline $finalversion... | cat)"
+      __commitlist2="$(git log --pretty=oneline v1.22.4... | cat)"$'\n'
+      #__commitlist2="$(git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" v1.22.4... |cat)"$'\n'
+
       # For Release Notes Formatting test more FILTERADD
       __commitlist="What's New "$'\n'
       declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
       do
+        #echo $col
         columnNotes=()
         while IFS= read -r line;
         do
           columnNotes+=( "$line" )
-        done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" v1.22.5... |cat) )
+        done < <( (git log --pretty=oneline:"%s" -i -E --grep="^(\[$col\])" v1.22.4... |cat) )
+        #echo $columnNotes
         if [ -n "$columnNotes" ]; then
           #echo "here"
           __commitlist+="[$col]"$'\n'
@@ -24,6 +28,7 @@
         fi
       done
       echo $__commitlist
+      echo $__commitlist2
 
 #      __commitlist="What's New "$'\n'
 #      declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
