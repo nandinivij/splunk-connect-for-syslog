@@ -2,7 +2,7 @@
 
 
       #__commitlist="$(git log --pretty=oneline $finalversion... | cat)"
-      # For Release Notes Formatting test
+      # For Release Notes Formatting
       __commitlist="What's New "$'\n'
       declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
@@ -11,7 +11,7 @@
         while IFS= read -r line;
         do
           columnNotes+=( "$line" )
-        done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" v1.22.5... |cat) )
+        done < <( (git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" v1.22.4... |cat) )
         if [ -n "$columnNotes" ]; then
           #echo "here"
           __commitlist+="[$col]"$'\n'
