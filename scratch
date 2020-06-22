@@ -4,7 +4,7 @@
       __commitlist2="$(git log --pretty=oneline v1.22.4... | cat)"$'\n'
       #__commitlist2="$(git log --pretty=format:"%s" -i -E --grep="^(\[$col\])" v1.22.4... |cat)"$'\n'
 
-      # For Release Notes Formatting test more DOC
+      # For Release Notes Formatting test more FIX
       __commitlist="What's New "$'\n'
       declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
       for col in ${ReleaseColumn[@]};
