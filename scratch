@@ -23,7 +23,9 @@
           do
             IFS=' '
             read -ra my_array2 <<< $i
-            __commitlist+="${my_array2[@]:1}"$'\n'
+            if [ -n "${my_array2[@]:1}" ]; then
+              __commitlist+="${my_array2[@]:1}"$'\n'
+            fi
           done
         fi
       done
