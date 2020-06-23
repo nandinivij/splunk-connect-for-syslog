@@ -30,7 +30,7 @@
         fi
       done
       echo $__commitlist
-     #echo $__commitlist2
+     ##echo $__commitlist2
 #
 ##      __commitlist="What's New "$'\n'
 ##      declare -a ReleaseColumn=("CI" "DOC" "FIX" "FEATURE" "FILTERADD" "FILTERMOD" "REVERT" "TEST")
