@@ -383,13 +383,13 @@ function increase_version {
         while IFS= read -r line;
         do
           columnNotes+=( "$line" )
-        done < <( (git log --pretty=oneline:"%s" -i -E --grep="^(\[$col\])" |cat) )
+        done < <( (git log --pretty=format:"%s" | grep -i -E "^(\[$col\])" |cat) )
       else
         columnNotes=()
         while IFS= read -r line;
         do
           columnNotes+=( "$line" )
-        done < <( (git log --pretty=oneline:"%s" -i -E --grep="^(\[$col\])" $finalversion... |cat) )
+        done < <( (git log  --pretty=format:"%s" $finalversion... | grep -i -E "^(\[$col\])"  |cat) )
       fi
       if [ -n "$columnNotes" ]; then
         for i in "${columnNotes[@]}"
