@@ -1,7 +1,6 @@
 
 # UPDATE:  Podman/RHEL UDP data block issue: netfilter connection table
 
-
 We have determined the root cause for the issue with UDP data blocking and Podman/RHEL.  The crux of the issue is that the netfilter
 connection tables are _not_ udpdated when a new container starts _and_ there is a constant stream of UDP traffic from a given IP destined
 for a given port.  The table is _only_ updated if the trafffic pauses for the length of the connection table timeout (30 seconds by default).  
