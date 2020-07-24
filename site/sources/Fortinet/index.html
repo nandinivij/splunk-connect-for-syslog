@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Fortinet - test</title>
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet">
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+    // Current page data
+    var mkdocs_page_name = "Fortinet";
+    var mkdocs_page_input_path = "sources/Fortinet/index.md";
+    var mkdocs_page_url = null;
+  </script>
+<script defer="" src="../../js/jquery-2.1.1.min.js"></script>
+<script defer="" src="../../js/modernizr-2.8.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</link><link href="index.pdf" rel="alternate" title="PDF Export" type="application/pdf"/></head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> test</a>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gettingstarted/">Read First</a>
+</li>
+<li class="toctree-l1"><a class="" href="../../gettingstarted/podman-systemd-general.md">Podman + systemd</a>
+</li>
+<li class="toctree-l1"><a class="" href="../../gettingstarted/docker-systemd-general.md">Docker CE + systemd</a>
+</li>
+<li class="toctree-l1"><a class="" href="../../gettingstarted/docker-swarm-general.md">Docker CE + Swarm</a>
+</li>
+<li class="toctree-l1"><a class="" href="../../gettingstarted/docker-swarm-rhel7.md">Docker CE + Swarm RHEL 7.7</a>
+</li>
+<li class="toctree-l1"><a class="" href="../../gettingstarted/byoe-rhel7.md">Bring your own Envionment</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../gettingstarted/quickstart/">Quickstart</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../../configuration.md">Configuration</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developing/">Development</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Sources</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../">About</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Brocade/">Brocade</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Checkpoint/">Checkpoint</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Cisco/">Cisco</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Citrix/">Citrix</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../CommonEventFormat/">Common Event Format</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../CyberArk/">CyberArk</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Dell_RSA/">Dell RSA</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../F5/">F5</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Forcepoint/">Forcepoint</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="./">Fortinet</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#product-fortigate">Product - Fortigate</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#sourcetypes">Sourcetypes</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sourcetype-and-index-configuration">Sourcetype and Index Configuration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#filter-type">Filter type</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-and-configuration">Setup and Configuration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#options">Options</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#verification">Verification</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#utm-message-type">UTM Message type</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#traffic-message-type">Traffic Message Type</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#event-message-type">Event Message Type</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#product-fortiweb">Product - FortiWeb</a>
+<ul>
+<li class="toctree-l3"><a class="reference internal" href="#sourcetypes_1">Sourcetypes</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sourcetype-and-index-configuration_1">Sourcetype and Index Configuration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#filter-type_1">Filter type</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-and-configuration_1">Setup and Configuration</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#options_1">Options</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#verification_1">Verification</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Imperva/">Imperva</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../InfoBlox/">InfoBlox</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Juniper/">Juniper</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../McAfee/">McAfee</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Microfocus/">Microfocus</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../nix/">Nix</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PaloaltoNetworks/">Palo Alto Networks</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Pfsense/">pfSense</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Proofpoint/">Proofpoint</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Schneider/">Schneider</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Symantec/">Symantec</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Ubiquiti/">Ubiquiti</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../VMWare/">VMware</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Zscaler/">Zscaler</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../../performance.md">Performance</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../../troubleshooting.md">Troubleshooting</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../../upgrade.md">Upgrading SC4S</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../../faq.md">SC4S FAQ</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">test</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../..">Docs</a> »</li>
+<li>Sources »</li>
+<li>Fortinet</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main">
+<div class="section">
+<h1 id="vendor-fortinet">Vendor - Fortinet<a class="headerlink" href="#vendor-fortinet" title="Permanent link">¶</a></h1>
+<p>There are two Fortinet device flavors (FortiOS and Fortiweb) that are supported by a single log path
+in SC4S.  Therefore, both Fortinet variants use “FORTINET” as the core of the unique port and
+archive environment variable settings (rather than a unique one per product), as the Fortinet log path
+handles either variant sending events to SC4S. Therefore, the FORTINET environment variables for unique
+port, archive, etc. should be set only <em>once</em>, regardless of how many unique ports or Fortinet appliance
+variants are in use.</p>
+<p>If your deployment has multiple Fortinet devices that send to more than one port,
+set the FORTINET unique port variable(s) to just one of the ports in use.  Then, map the others with
+container networking to the port chosen, similar to the way default ports are configured (see the
+“Getting Started” runtime documents for more details).</p>
+<p>Example: If you have three Fortinet devices, sending on TCP ports 2000,2001, and 2002, set 
+<code>SC4S_LISTEN_FORTINET_TCP_PORT=2000</code>.  Then, change the unit/compose files to route the three external
+ports to the single port 2000 on the container. Here is the example for podman/systemd:</p>
+<pre class="codehilite"><code>ExecStart=/usr/bin/podman -p 514:514 -p 514:514/udp -p 6514:6514 -p 2000-2002:2000 \</code></pre>
+<p>or this, for docker-compose/swarm installations:</p>
+<pre class="codehilite"><code># Comment the following line out if using docker-compose         
+         mode: host         
+       - target: 2000
+         published: 2000-2002
+         protocol: tcp   </code></pre>
+<p>These changes will route all three ports to TCP port 2000 inside the container, and the single Fortinet log 
+path will properly process data from all three devices.</p>
+<p>The source documentation included below includes settings for both appliance types (FortiOS and Fortigate)
+supported by SC4S.</p>
+<h2 id="product-fortigate">Product - Fortigate<a class="headerlink" href="#product-fortigate" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Ref</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk Add-on</td>
+<td>https://splunkbase.splunk.com/app/2846/</td>
+</tr>
+<tr>
+<td>Product Manual</td>
+<td>https://docs.fortinet.com/product/fortigate/6.2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sourcetypes">Sourcetypes<a class="headerlink" href="#sourcetypes" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>sourcetype</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fgt_log</td>
+<td>Catch-all sourcetype; not used by the TA</td>
+</tr>
+<tr>
+<td>fgt_traffic</td>
+<td>None</td>
+</tr>
+<tr>
+<td>fgt_utm</td>
+<td>None</td>
+</tr>
+<tr>
+<td>fgt_event</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sourcetype-and-index-configuration">Sourcetype and Index Configuration<a class="headerlink" href="#sourcetype-and-index-configuration" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>sourcetype</th>
+<th>index</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fortinet_fortios_traffic</td>
+<td>fgt_traffic</td>
+<td>netfw</td>
+<td>none</td>
+</tr>
+<tr>
+<td>fortinet_fortios_utm</td>
+<td>fgt_utm</td>
+<td>netids</td>
+<td>none</td>
+</tr>
+<tr>
+<td>fortinet_fortios_event</td>
+<td>fgt_event</td>
+<td>netops</td>
+<td>none</td>
+</tr>
+<tr>
+<td>fortinet_fortios_log</td>
+<td>fgt_log</td>
+<td>netops</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h3 id="filter-type">Filter type<a class="headerlink" href="#filter-type" title="Permanent link">¶</a></h3>
+<p>MSG Parse: This filter parses message content</p>
+<h3 id="setup-and-configuration">Setup and Configuration<a class="headerlink" href="#setup-and-configuration" title="Permanent link">¶</a></h3>
+<ul>
+<li>Install the Splunk Add-on on the search head(s) for the user communities interested in this data source. If SC4S is exclusively used the addon is not required on the indexer.</li>
+<li>Review and update the splunk_index.csv file and set the index and sourcetype as required for the data source.</li>
+<li>Refer to the admin manual for specific details of configuration to send Reliable syslog using RFC 3195 format, a typical logging configuration will include the following features.</li>
+</ul>
+<pre class="codehilite"><code>config log memory filter
+
+set forward-traffic enable
+
+set local-traffic enable
+
+set sniffer-traffic disable
+
+set anomaly enable
+
+set voip disable
+
+set multicast-traffic enable
+
+set dns enable
+
+end
+
+config system global
+
+set cli-audit-log enable
+
+end
+
+config log setting
+
+set neighbor-event enable
+
+end</code></pre>
+<h3 id="options">Options<a class="headerlink" href="#options" title="Permanent link">¶</a></h3>
+<ul>
+<li>NOTE:  Remember to set the variable(s) below only <em>once</em>, regardless of how many unique ports and/or Fortinet device types
+are in use.  See the introductory note above for more details.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>default</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SC4S_LISTEN_FORTINET_TCP_PORT</td>
+<td>empty string</td>
+<td>Enable a UDP port for this specific vendor product using the number defined</td>
+</tr>
+<tr>
+<td>SC4S_LISTEN_FORTINET_UDP_PORT</td>
+<td>empty string</td>
+<td>Enable a UDP port for this specific vendor product using the number defined</td>
+</tr>
+<tr>
+<td>SC4S_ARCHIVE_FORTINET</td>
+<td>no</td>
+<td>Enable archive to disk for this specific source</td>
+</tr>
+<tr>
+<td>SC4S_DEST_FORTINET_HEC</td>
+<td>no</td>
+<td>When Splunk HEC is disabled globally set to yes to enable this specific source</td>
+</tr>
+</tbody>
+</table>
+<h3 id="verification">Verification<a class="headerlink" href="#verification" title="Permanent link">¶</a></h3>
+<p>An active firewall will generate frequent events, in addition fortigate has the ability to test logging functionality using a built in command</p>
+<pre class="codehilite"><code>diag log test</code></pre>
+<p>Verify timestamp, and host values match as expected    </p>
+<pre class="codehilite"><code>index=&lt;asconfigured&gt; (sourcetype=fgt_log OR sourcetype=fgt_traffic OR sourcetype=fgt_utm)</code></pre>
+<h3 id="utm-message-type">UTM Message type<a class="headerlink" href="#utm-message-type" title="Permanent link">¶</a></h3>
+<p><img alt="FortiGate UTM message" src="FortiGate_utm.png"/></p>
+<h3 id="traffic-message-type">Traffic Message Type<a class="headerlink" href="#traffic-message-type" title="Permanent link">¶</a></h3>
+<p><img alt="FortiGate Traffic message" src="FortiGate_traffic.png"/></p>
+<h3 id="event-message-type">Event Message Type<a class="headerlink" href="#event-message-type" title="Permanent link">¶</a></h3>
+<p><img alt="FortiGate Event message" src="FortiGate_event.png"/></p>
+<p>Verify timestamp, and host values match as expected</p>
+<h2 id="product-fortiweb">Product - FortiWeb<a class="headerlink" href="#product-fortiweb" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>Ref</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Splunk Add-on</td>
+<td>https://splunkbase.splunk.com/app/4679/</td>
+</tr>
+<tr>
+<td>Product Manual</td>
+<td>https://docs.fortinet.com/product/fortiweb/6.3</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sourcetypes_1">Sourcetypes<a class="headerlink" href="#sourcetypes_1" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>sourcetype</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fgt_log</td>
+<td>Catch-all sourcetype; not used by the TA</td>
+</tr>
+<tr>
+<td>fwb_traffic</td>
+<td>None</td>
+</tr>
+<tr>
+<td>fwb_attack</td>
+<td>None</td>
+</tr>
+<tr>
+<td>fwb_event</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sourcetype-and-index-configuration_1">Sourcetype and Index Configuration<a class="headerlink" href="#sourcetype-and-index-configuration_1" title="Permanent link">¶</a></h3>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>sourcetype</th>
+<th>index</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fortinet_fortiweb_traffic</td>
+<td>fwb_traffic</td>
+<td>netfw</td>
+<td>none</td>
+</tr>
+<tr>
+<td>fortinet_fortiweb_attack</td>
+<td>fwb_attack</td>
+<td>netids</td>
+<td>none</td>
+</tr>
+<tr>
+<td>fortinet_fortiweb_event</td>
+<td>fwb_event</td>
+<td>netops</td>
+<td>none</td>
+</tr>
+<tr>
+<td>fortinet_fortiweb_log</td>
+<td>fwb_log</td>
+<td>netops</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h3 id="filter-type_1">Filter type<a class="headerlink" href="#filter-type_1" title="Permanent link">¶</a></h3>
+<p>MSG Parse: This filter parses message content</p>
+<h3 id="setup-and-configuration_1">Setup and Configuration<a class="headerlink" href="#setup-and-configuration_1" title="Permanent link">¶</a></h3>
+<ul>
+<li>Install the Splunk Add-on on the search head(s) for the user communities interested in this data source. If SC4S is exclusively used the addon is not required on the indexer.</li>
+<li>Review and update the splunk_index.csv file and set the index and sourcetype as required for the data source.</li>
+<li>Refer to the admin manual for specific details of configuration to send Reliable syslog using RFC 3195 format, a typical logging configuration will include the following features.</li>
+</ul>
+<pre class="codehilite"><code>config log syslog-policy
+
+edit splunk  
+
+config syslog-server-list 
+
+edit 1
+
+set server x.x.x.x
+
+set port 514 (Example. Should be the same as default or dedicated port selected for sc4s)   
+
+end
+
+end
+
+config log syslogd
+
+set policy splunk
+
+set status enable
+
+end</code></pre>
+<h3 id="options_1">Options<a class="headerlink" href="#options_1" title="Permanent link">¶</a></h3>
+<ul>
+<li>NOTE:  Remember to set the variable(s) below only <em>once</em>, regardless of how many unique ports and/or Fortinet device types
+are in use.  See the introductory note above for more details.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>default</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SC4S_LISTEN_FORTINET_TCP_PORT</td>
+<td>empty string</td>
+<td>Enable a UDP port for this specific vendor product using the number defined</td>
+</tr>
+<tr>
+<td>SC4S_LISTEN_FORTINET_UDP_PORT</td>
+<td>empty string</td>
+<td>Enable a UDP port for this specific vendor product using the number defined</td>
+</tr>
+<tr>
+<td>SC4S_ARCHIVE_FORTINET</td>
+<td>no</td>
+<td>Enable archive to disk for this specific source</td>
+</tr>
+<tr>
+<td>SC4S_DEST_FORTINET_HEC</td>
+<td>no</td>
+<td>When Splunk HEC is disabled globally set to yes to enable this specific source</td>
+</tr>
+</tbody>
+</table>
+<h3 id="verification_1">Verification<a class="headerlink" href="#verification_1" title="Permanent link">¶</a></h3>
+<p>An active firewall will generate frequent events, in addition fortigate has the ability to test logging functionality using a built in command</p>
+<pre class="codehilite"><code>diag log test</code></pre>
+<p>Verify timestamp, and host values match as expected    </p>
+<pre class="codehilite"><code>index=&lt;asconfigured&gt; (sourcetype=fwb_log OR sourcetype=fwb_traffic OR sourcetype=fwb_attack OR sourcetype=fwb_event)</code></pre>
+<p>Verify timestamp, and host values match as expected</p>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-right" href="../Imperva/" title="Imperva">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral" href="../Forcepoint/" title="Forcepoint"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../Forcepoint/" style="color: #fcfcfc;">« Previous</a></span>
+<span style="margin-left: 15px"><a href="../Imperva/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../..';</script>
+<script defer="" src="../../js/theme.js"></script>
+<script defer="" src="../../search/main.js"></script>
+<script defer="">
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+</body>
+</html>

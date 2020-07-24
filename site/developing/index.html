@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../img/favicon.ico" rel="shortcut icon"/>
+<title>Development - test</title>
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet">
+<link href="../css/theme.css" rel="stylesheet"/>
+<link href="../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+    // Current page data
+    var mkdocs_page_name = "Development";
+    var mkdocs_page_input_path = "developing/index.md";
+    var mkdocs_page_url = null;
+  </script>
+<script defer="" src="../js/jquery-2.1.1.min.js"></script>
+<script defer="" src="../js/modernizr-2.8.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</link><link href="index.pdf" rel="alternate" title="PDF Export" type="application/pdf"/></head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href=".."> test</a>
+<div role="search">
+<form action="../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted/">Read First</a>
+</li>
+<li class="toctree-l1"><a class="" href="../gettingstarted/podman-systemd-general.md">Podman + systemd</a>
+</li>
+<li class="toctree-l1"><a class="" href="../gettingstarted/docker-systemd-general.md">Docker CE + systemd</a>
+</li>
+<li class="toctree-l1"><a class="" href="../gettingstarted/docker-swarm-general.md">Docker CE + Swarm</a>
+</li>
+<li class="toctree-l1"><a class="" href="../gettingstarted/docker-swarm-rhel7.md">Docker CE + Swarm RHEL 7.7</a>
+</li>
+<li class="toctree-l1"><a class="" href="../gettingstarted/byoe-rhel7.md">Bring your own Envionment</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../gettingstarted/quickstart/">Quickstart</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../configuration.md">Configuration</a>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal current" href="./">Development</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#get-docker">Get Docker</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-vs-code-ide">Setup VS Code IDE</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fork-and-clone-the-github-repository">Fork and Clone the github repository</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#setup-the-project-and-install-requirements">Setup the project and install requirements</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#click-the-test-lab-icon">Click the test lab icon</a>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sources/">About</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Brocade/">Brocade</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Checkpoint/">Checkpoint</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Cisco/">Cisco</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Citrix/">Citrix</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/CommonEventFormat/">Common Event Format</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/CyberArk/">CyberArk</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Dell_RSA/">Dell RSA</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/F5/">F5</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Forcepoint/">Forcepoint</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Fortinet/">Fortinet</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Imperva/">Imperva</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/InfoBlox/">InfoBlox</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Juniper/">Juniper</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/McAfee/">McAfee</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Microfocus/">Microfocus</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/nix/">Nix</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/PaloaltoNetworks/">Palo Alto Networks</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Pfsense/">pfSense</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Proofpoint/">Proofpoint</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Schneider/">Schneider</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Symantec/">Symantec</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Ubiquiti/">Ubiquiti</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/VMWare/">VMware</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sources/Zscaler/">Zscaler</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../performance.md">Performance</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../troubleshooting.md">Troubleshooting</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../upgrade.md">Upgrading SC4S</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../faq.md">SC4S FAQ</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="..">test</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="..">Docs</a> »</li>
+<li>Development</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main">
+<div class="section">
+<h1 id="development-setup-beta">Development setup (BETA)<a class="headerlink" href="#development-setup-beta" title="Permanent link">¶</a></h1>
+<h2 id="get-docker">Get Docker<a class="headerlink" href="#get-docker" title="Permanent link">¶</a></h2>
+<p>Development requires Docker desktop available for windows + and mac or Docker CE available for Linux. Visit (Docker)[https://www.docker.com/get-started]
+for download instructions</p>
+<h2 id="setup-vs-code-ide">Setup VS Code IDE<a class="headerlink" href="#setup-vs-code-ide" title="Permanent link">¶</a></h2>
+<p>VS Code provides a free IDE experience that is effective for daily development with SC4S. Visit (Microsoft)[https://code.visualstudio.com/docs/introvideos/basics]
+to download and install for your plaform (windows/mac/linux)</p>
+<h2 id="fork-and-clone-the-github-repository">Fork and Clone the github repository<a class="headerlink" href="#fork-and-clone-the-github-repository" title="Permanent link">¶</a></h2>
+<p>Visit our repository at (Github)[https://github.com/splunk/splunk-connect-for-syslog] and “fork” our repository. This will allow you to make changes and submit pull requests.</p>
+<p><img alt="How to Fork" src="gh_fork.png"/></p>
+<p>Click the clone icon and select the location</p>
+<p><img alt="How to Clone" src="gh_clone.png"/></p>
+<h2 id="setup-the-project-and-install-requirements">Setup the project and install requirements<a class="headerlink" href="#setup-the-project-and-install-requirements" title="Permanent link">¶</a></h2>
+<p>The following steps are required <em>only</em> on the first time run.</p>
+<ul>
+<li>Install VS Code Extensions S<ul>
+<li>Python</li>
+<li>Test Explorer</li>
+<li>“Python Test Explorer”</li>
+</ul>
+</li>
+<li>From the terminal menu select “Run Task”</li>
+<li>Select “Setup step 1: python venv” then “go without scanning output”</li>
+<li>From the terminal menu select “Run Task”</li>
+<li>Select “Setup step 2: python requirements” then “go without scanning output”</li>
+</ul>
+<p><img alt="VS Code setup" src="vsc_run.png"/></p>
+<h2 id="click-the-test-lab-icon">Click the test lab icon<a class="headerlink" href="#click-the-test-lab-icon" title="Permanent link">¶</a></h2>
+<ul>
+<li>Run all tests. Icons on each test will turn green or red to indicate pass or fail.  Though VS Code does not show the status 
+of any given test until all tests complete in the test tree, you can select “Show test output” near the top of the test
+directory tree to see the terminal output of each test as it runs in the “Output” pane.</li>
+</ul>
+<p><img alt="VS Code Debug" src="vsc_debug.png"/></p>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-right" href="../sources/" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral" href="../gettingstarted/quickstart/" title="Quickstart"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../gettingstarted/quickstart/" style="color: #fcfcfc;">« Previous</a></span>
+<span style="margin-left: 15px"><a href="../sources/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '..';</script>
+<script defer="" src="../js/theme.js"></script>
+<script defer="" src="../search/main.js"></script>
+<script defer="">
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+</body>
+</html>

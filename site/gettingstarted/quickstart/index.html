@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>Quickstart - test</title>
+<link href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" rel="stylesheet">
+<link href="../../css/theme.css" rel="stylesheet"/>
+<link href="../../css/theme_extra.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet"/>
+<script>
+    // Current page data
+    var mkdocs_page_name = "Quickstart";
+    var mkdocs_page_input_path = "gettingstarted/quickstart.md";
+    var mkdocs_page_url = null;
+  </script>
+<script defer="" src="../../js/jquery-2.1.1.min.js"></script>
+<script defer="" src="../../js/modernizr-2.8.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</link><link href="quickstart.pdf" rel="alternate" title="PDF Export" type="application/pdf"/></head>
+<body class="wy-body-for-nav" role="document">
+<div class="wy-grid-for-nav">
+<nav class="wy-nav-side stickynav" data-toggle="wy-nav-shift">
+<div class="wy-side-scroll">
+<div class="wy-side-nav-search">
+<a class="icon icon-home" href="../.."> test</a>
+<div role="search">
+<form action="../../search.html" class="wy-form" id="rtd-search-form" method="get">
+<input name="q" placeholder="Search docs" title="Type search term here" type="text"/>
+</form>
+</div>
+</div>
+<div aria-label="main navigation" class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../">Read First</a>
+</li>
+<li class="toctree-l1"><a class="" href="../podman-systemd-general.md">Podman + systemd</a>
+</li>
+<li class="toctree-l1"><a class="" href="../docker-systemd-general.md">Docker CE + systemd</a>
+</li>
+<li class="toctree-l1"><a class="" href="../docker-swarm-general.md">Docker CE + Swarm</a>
+</li>
+<li class="toctree-l1"><a class="" href="../docker-swarm-rhel7.md">Docker CE + Swarm RHEL 7.7</a>
+</li>
+<li class="toctree-l1"><a class="" href="../byoe-rhel7.md">Bring your own Envionment</a>
+</li>
+<li class="toctree-l1 current"><a class="reference internal current" href="./">Quickstart</a>
+<ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="#splunk-setup">Splunk setup</a>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sc4s-setupusing-rhel-76">SC4S setup(using RHEL 7.6)</a>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../../configuration.md">Configuration</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../developing/">Development</a>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Sources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/">About</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Brocade/">Brocade</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Checkpoint/">Checkpoint</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Cisco/">Cisco</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Citrix/">Citrix</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/CommonEventFormat/">Common Event Format</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/CyberArk/">CyberArk</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Dell_RSA/">Dell RSA</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/F5/">F5</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Forcepoint/">Forcepoint</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Fortinet/">Fortinet</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Imperva/">Imperva</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/InfoBlox/">InfoBlox</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Juniper/">Juniper</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/McAfee/">McAfee</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Microfocus/">Microfocus</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/nix/">Nix</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/PaloaltoNetworks/">Palo Alto Networks</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Pfsense/">pfSense</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Proofpoint/">Proofpoint</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Schneider/">Schneider</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Symantec/">Symantec</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Ubiquiti/">Ubiquiti</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/VMWare/">VMware</a>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sources/Zscaler/">Zscaler</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../../performance.md">Performance</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../../troubleshooting.md">Troubleshooting</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../../upgrade.md">Upgrading SC4S</a>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="" href="../../faq.md">SC4S FAQ</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<section class="wy-nav-content-wrap" data-toggle="wy-nav-shift">
+<nav aria-label="top navigation" class="wy-nav-top" role="navigation">
+<i class="fa fa-bars" data-toggle="wy-nav-top"></i>
+<a href="../..">test</a>
+</nav>
+<div class="wy-nav-content">
+<div class="rst-content">
+<div aria-label="breadcrumbs navigation" role="navigation">
+<ul class="wy-breadcrumbs">
+<li><a href="../..">Docs</a> »</li>
+<li>Getting Started »</li>
+<li>Quickstart</li>
+<li class="wy-breadcrumbs-aside">
+</li>
+</ul>
+<hr/>
+</div>
+<div role="main">
+<div class="section">
+<h1 id="quickstart-guide">Quickstart Guide<a class="headerlink" href="#quickstart-guide" title="Permanent link">¶</a></h1>
+<h3 id="splunk-setup">Splunk setup<a class="headerlink" href="#splunk-setup" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>Create the following default indexes that are used by SC4S</p>
+<ul>
+<li>email</li>
+<li>epav</li>
+<li>netauth</li>
+<li>netdlp</li>
+<li>netdns</li>
+<li>netfw</li>
+<li>netids</li>
+<li>netops</li>
+<li>netwaf</li>
+<li>netproxy</li>
+<li>netipam</li>
+<li>oswinsec</li>
+<li>osnix</li>
+<li>em_metrics (Optional opt-in for SC4S operational metrics; ensure this is created as a metrics index)</li>
+</ul>
+</li>
+<li>
+<p>Create a HEC token for SC4S. When filling out the form for the token, it is recommended that the “Selected Indexes” pane be left blank and that a
+ <code>lastChanceIndex</code> be created so that all data received by SC4S will land somewhere in Splunk.</p>
+</li>
+</ul>
+<h3 id="sc4s-setupusing-rhel-76">SC4S setup<sub>(using RHEL 7.6)</sub><a class="headerlink" href="#sc4s-setupusing-rhel-76" title="Permanent link">¶</a></h3>
+<ul>
+<li>
+<p>Set the host OS kernel to match the default receive buffer of sc4s which is set to 16MB</p>
+<ul>
+<li>
+<p>Add following to /etc/sysctl.conf</p>
+<p><code>net.core.rmem_default = 1703936
+ net.core.rmem_max = 1703936</code></p>
+</li>
+<li>
+<p>Apply to the kernel</p>
+<p><code>sysctl -p</code></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Ensure the kernel is not dropping packets</p>
+<p><code>netstat -su | grep "receive errors"</code></p>
+</li>
+<li>
+<p>Install conntrack (RHEL 7/8 with podman only)</p>
+<p><code>&lt;dnf or yum&gt; install conntrack</code></p>
+</li>
+<li>
+<p>Create the systemd unit file <code>/lib/systemd/system/sc4s.service</code>. Copy and paste from the
+<a href="https://splunk-connect-for-syslog.readthedocs.io/en/master/gettingstarted/podman-systemd-general/#initial-setup">SC4S sample unit file</a>.</p>
+</li>
+<li>
+<p>Install podman or docker </p>
+<p><code>bash
+sudo yum -y install podman
+or
+sudo yum install docker-engine -y</code></p>
+</li>
+<li>
+<p>Create a local volume that will contain the disk buffer files and other SC4S state files</p>
+<p><code>bash
+sudo podman volume create splunk-sc4s-var
+or 
+sudo docker volume create splunk-sc4s-var</code></p>
+</li>
+<li>
+<p>Create directories used as a mount point for local overrides and configurations</p>
+<p><code>bash
+mkdir /opt/sc4s/local
+mkdir /opt/sc4s/archive
+mkdir /opt/sc4s/tls</code></p>
+</li>
+<li>
+<p>Create the environment file <code>/opt/sc4s/env_file</code> and replace the HEC_URL and HEC_TOKEN as appropriate</p>
+<p>```dotenv
+SPLUNK_HEC_URL=<hec_url>
+SPLUNK_HEC_TOKEN=<hec_token></hec_token></hec_url></p>
+<h1 id="uncomment-the-following-line-if-using-untrusted-ssl-certificates">Uncomment the following line if using untrusted SSL certificates<a class="headerlink" href="#uncomment-the-following-line-if-using-untrusted-ssl-certificates" title="Permanent link">¶</a></h1>
+<h1 id="sc4s_dest_splunk_hec_tls_verifyno">SC4S_DEST_SPLUNK_HEC_TLS_VERIFY=no<a class="headerlink" href="#sc4s_dest_splunk_hec_tls_verifyno" title="Permanent link">¶</a></h1>
+<p>```</p>
+</li>
+<li>
+<p>Configure SC4S for systemd and start SC4S</p>
+<p><code>bash
+sudo systemctl daemon-reload 
+sudo systemctl enable sc4s
+sudo systemctl start sc4s</code></p>
+</li>
+<li>
+<p>Check podman/docker logs for errors</p>
+<p><code>bash
+sudo podman logs SC4S
+or
+sudo docker logs SC4S</code></p>
+</li>
+<li>
+<p>Search on Splunk for successful installation of SC4S</p>
+<p><code>index=* sourcetype=sc4s:events "starting up"</code></p>
+</li>
+<li>
+<p>Send sample data to default udp port 514 of SC4S host</p>
+<p><code>bash
+echo “Hello SC4S” &gt; /dev/udp/&lt;SC4S_ip&gt;/514</code></p>
+</li>
+</ul>
+</div>
+</div>
+<footer>
+<div aria-label="footer navigation" class="rst-footer-buttons" role="navigation">
+<a class="btn btn-neutral float-right" href="../../developing/" title="Development">Next <span class="icon icon-circle-arrow-right"></span></a>
+<a class="btn btn-neutral" href="../" title="Read First"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+</div>
+<hr/>
+<div role="contentinfo">
+<!-- Copyright etc -->
+</div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+</div>
+</div>
+</section>
+</div>
+<div aria-label="versions" class="rst-versions" role="note">
+<span class="rst-current-version" data-toggle="rst-current-version">
+<span><a href="../" style="color: #fcfcfc;">« Previous</a></span>
+<span style="margin-left: 15px"><a href="../../developing/" style="color: #fcfcfc">Next »</a></span>
+</span>
+</div>
+<script>var base_url = '../..';</script>
+<script defer="" src="../../js/theme.js"></script>
+<script defer="" src="../../search/main.js"></script>
+<script defer="">
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+</body>
+</html>
