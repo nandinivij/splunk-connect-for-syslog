@@ -128,12 +128,12 @@ jobs:
     environment:
       SEMTAG: "beta"
     <<: *tag
-  tag-candidate:
-    docker:
-      - image: circleci/python:3.7
-    environment:
-      SEMTAG: "candidate"
-    <<: *tag
+#  tag-candidate:
+#    docker:
+#      - image: circleci/python:3.7
+#    environment:
+#      SEMTAG: "candidate"
+#    <<: *tag
   tag-final-major:
     docker:
       - image: circleci/python:3.7
@@ -274,62 +274,62 @@ workflows:
       #         filters:
       #           branches:
       #             only: /.*/
-      - approval-tag-alpha:
-          type: approval
-          filters:
-            branches:
-              only: develop
-      - tag-alpha:
-          requires:
-            - approval-tag-alpha
-      - approval-tag-beta:
-          requires:
-            - tag-alpha
-          type: approval
-          filters:
-            branches:
-              only: develop
-      - tag-beta:
-          requires:
-            - approval-tag-beta
-      - approval-merge-beta-to-master:
-          requires:
-            - tag-beta
-          type: approval
-          filters:
-            branches:
-              only: develop
-      - merge-beta-to-master:
-          requires:
-            - approval-merge-beta-to-master
-          filters:
-            branches:
-              only: develop
-      - tag-candidate:
-          filters:
-            branches:
-              only: master
-      - approval-tag-final-major:
-          type: approval
-          requires:
-            - tag-candidate
-      - tag-final-major:
-          requires:
-            - approval-tag-final-major
-      - approval-tag-final-minor:
-          type: approval
-          requires:
-            - tag-candidate
-      - tag-final-minor:
-          requires:
-            - approval-tag-final-minor
-      - approval-tag-final-patch:
-          type: approval
-          requires:
-            - tag-candidate
-      - tag-final-patch:
-          requires:
-            - approval-tag-final-patch
+#      - approval-tag-alpha:
+#          type: approval
+#          filters:
+#            branches:
+#              only: develop
+#      - tag-alpha:
+#          requires:
+#            - approval-tag-alpha
+#      - approval-tag-beta:
+#          requires:
+#            - tag-alpha
+#          type: approval
+#          filters:
+#            branches:
+#              only: develop
+#      - tag-beta:
+#          requires:
+#            - approval-tag-beta
+#      - approval-merge-beta-to-master:
+#          requires:
+#            - tag-beta
+#          type: approval
+#          filters:
+#            branches:
+#              only: develop
+#      - merge-beta-to-master:
+#          requires:
+#            - approval-merge-beta-to-master
+#          filters:
+#            branches:
+#              only: develop
+#      - tag-candidate:
+#          filters:
+#            branches:
+#              only: master
+#      - approval-tag-final-major:
+#          type: approval
+#          requires:
+#            - tag-candidate
+#      - tag-final-major:
+#          requires:
+#            - approval-tag-final-major
+#      - approval-tag-final-minor:
+#          type: approval
+#          requires:
+#            - tag-candidate
+#      - tag-final-minor:
+#          requires:
+#            - approval-tag-final-minor
+#      - approval-tag-final-patch:
+#          type: approval
+#          requires:
+#            - tag-candidate
+#      - tag-final-patch:
+#          requires:
+#            - approval-tag-final-patch
 
   publish:
     jobs:
