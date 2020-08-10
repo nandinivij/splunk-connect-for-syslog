@@ -20,7 +20,7 @@ test: &test
         command: |
           pip install -r tests/requirements.txt
           mkdir test-results
-          $HOME/go/bin/pandoc --version
+          ./dummy.sh
 #    - run:
 #        name: Setup for dummy
 #        command: |
