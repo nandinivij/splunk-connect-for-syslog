@@ -55,11 +55,11 @@ tag: &tag
         fingerprints:
           - "d2:3e:0d:a2:8e:f7:49:60:01:5c:ff:99:9e:66:3a:06"
           #	# - "7c:e9:cc:8d:8e:4d:9c:17:1d:e3:96:23:ce:bd:a4:c3"
-    - checkout
-    - run:
-        name: TAG
-        command: |
-          ./semtag ${SEMTAG}
+#    - checkout
+#    - run:
+#        name: TAG
+#        command: |
+#          ./semtag ${SEMTAG}
 
 docker_tag: &docker_tag
   steps:
@@ -323,13 +323,13 @@ workflows:
 #      - tag-final-minor:
 #          requires:
 #            - approval-tag-final-minor
-      - approval-tag-final-patch:
-          type: approval
-          requires:
-            - tag-candidate
-      - tag-final-patch:
-          requires:
-            - approval-tag-final-patch
+#      - approval-tag-final-patch:
+#          type: approval
+#          requires:
+#            - tag-candidate
+#      - tag-final-patch:
+#          requires:
+#            - approval-tag-final-patch
 
   publish:
     jobs:
