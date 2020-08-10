@@ -18,3 +18,5 @@ pathlib2
 psutil
 requests
 pytest-xdist
+pandoc
+pdflatex

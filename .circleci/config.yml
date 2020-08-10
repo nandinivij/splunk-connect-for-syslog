@@ -20,14 +20,11 @@ test: &test
 #        command: |
 #          pip install -r tests/requirements.txt
 #          mkdir test-results
-    - run:
-        name: Setup for dummy
-        command: |
-          echo $BASH_ENV
-          sudo apt-get update
-          sudo apt-get install -y python-pip python-dev
-          sudo pip install -r dummy.txt
-          pandoc --version
+#    - run:
+#        name: Setup for dummy
+#        command: |
+#          echo $BASH_ENV
+#          pip install -r dummy.txt
 
 #          RELEASES_URL='https://github.com/jgm/pandoc/releases'
 #          export PANDOCVERSION=$(curl -I "$RELEASES_URL/latest" | sed -ne 's#Location:.*tag/\(.*\)$#\1#p' | tr -d "\n\r")
