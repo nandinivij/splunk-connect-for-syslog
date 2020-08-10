@@ -1,3 +1,4 @@
 echo "hello"
-which pandoc
+var=$(which pandoc)
+echo "$var"
 echo "world"
