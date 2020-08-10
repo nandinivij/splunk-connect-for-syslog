@@ -20,7 +20,7 @@ test: &test
         command: |
           pip install -r tests/requirements.txt
           mkdir test-results
-          ./dummy.sh
+          echo "$BASH_ENV"
 #    - run:
 #        name: Setup for dummy
 #        command: |
