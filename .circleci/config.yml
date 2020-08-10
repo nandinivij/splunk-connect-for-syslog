@@ -23,11 +23,12 @@ test: &test
     - run:
         name: Setup for dummy
         command: |
+          echo $BASH_ENV
           pip install -r dummy.txt
           RELEASES_URL='https://github.com/jgm/pandoc/releases'
           export PANDOCVERSION=$(curl -I "$RELEASES_URL/latest" | sed -ne 's#Location:.*tag/\(.*\)$#\1#p' | tr -d "\n\r")
           echo $PANDOCVERSION
-          echo "export PATH=$HOME/pandoc-$PANDOCVERSION/bin:$PATH" >> $BASH_ENV
+          echo "export PATH=$HOME/pandoc-$PANDOCVERSION/bin:$BASH_ENV" >> $BASH_ENV
           pandoc -s —pdf-engine=pdflatex -o docs.pdf $(find . -type f -name "*.md")
     - run:
         name: Version
