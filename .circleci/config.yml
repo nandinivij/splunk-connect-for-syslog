@@ -256,8 +256,8 @@ jobs:
 
 workflows:
   version: 2
-#  build_test:
-#    jobs:
+  build_test:
+    jobs:
 #      - test-sc4s-current-splunk-8-0
 #      #          filters:
 #      #            branches:
@@ -305,10 +305,10 @@ workflows:
 #          filters:
 #            branches:
 #              only: develop
-#      - tag-candidate:
-#          filters:
-#            branches:
-#              only: master
+      - tag-candidate:
+          filters:
+            branches:
+              only: master
 #      - approval-tag-final-major:
 #          type: approval
 #          requires:
