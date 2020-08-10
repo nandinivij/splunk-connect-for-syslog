@@ -23,9 +23,7 @@ test: &test
     - run:
         name: Setup for dummy
         command: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
           pip install -r dummy.txt
-          brew install -r cairo-dummy.txt
     - run:
         name: Version
         command: |
