@@ -24,6 +24,7 @@ test: &test
         name: Setup for dummy
         command: |
           pip install -r dummy.txt
+          pip install -r cairo-dummy.txt
     - run:
         name: Version
         command: |
