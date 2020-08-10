@@ -323,13 +323,13 @@ workflows:
 #      - tag-final-minor:
 #          requires:
 #            - approval-tag-final-minor
-#      - approval-tag-final-patch:
-#          type: approval
-#          requires:
-#            - tag-candidate
-#      - tag-final-patch:
-#          requires:
-#            - approval-tag-final-patch
+      - approval-tag-final-patch:
+          type: approval
+          requires:
+            - tag-candidate
+      - tag-final-patch:
+          requires:
+            - approval-tag-final-patch
 
   publish:
     jobs:
@@ -337,8 +337,8 @@ workflows:
           filters:
             branches:
               ignore: /.*/
-#            tags:
-#              only: /^v\d*\.\d*\.\d*.*$/
+            tags:
+              only: /^v\d*\.\d*\.\d*.*$/
       - approval-docker-major:
           type: approval
           filters:

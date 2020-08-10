@@ -1,23 +1,5 @@
 #CONTRIBUTING
 
-##Prerequisites
-
-When contributing to this repository, please first discuss the change you wish to make via a GitHub issue or Slack message with the owners of this repository.
-
-##Setup Development Environment
-
-For a basic development environment docker and a bash shell is all you need. For a more complete IDE experience see our wiki (Setup PyCharm)[https://github.com/splunk/splunk-connect-for-syslog/wiki/SC4S-Development-Setup-Using-PyCharm] 
-
-##Contribution Workflow
-
-SC4S is a community project so please consider contributing your efforts! For example, documentation can always use improvement. There's always code that can be clarified, functionality that can be extended, new data filters to develop. If you see something you think should be fixed or added, go for it.
-
-#Feature Requests and Bug Reports
-
-Have ideas on improvements or found a problem? While the community encourages everyone to contribute code, it is also appreciated when someone reports an issue. Please report any issues or bugs you find through GitHub's issue tracker.
-
-If you are reporting a bug, please include the following details:
-
 * Your operating system name and version
 * Any details about your local setup that might be helpful in troubleshooting (ex. container runtime you use, etc.)
 * Detailed steps to reproduce the bug
