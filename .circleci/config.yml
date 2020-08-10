@@ -256,8 +256,8 @@ jobs:
 
 workflows:
   version: 2
-  build_test:
-    jobs:
+#  build_test:
+#    jobs:
 #      - test-sc4s-current-splunk-8-0
 #      #          filters:
 #      #            branches:
