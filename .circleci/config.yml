@@ -15,11 +15,12 @@ test: &test
     - checkout
     - setup_remote_docker:
         docker_layer_caching: true
-#    - run:
-#        name: Setup for testing
-#        command: |
-#          pip install -r tests/requirements.txt
-#          mkdir test-results
+    - run:
+        name: Setup for testing
+        command: |
+          pip install -r tests/requirements.txt
+          mkdir test-results
+          pandoc --version
 #    - run:
 #        name: Setup for dummy
 #        command: |
