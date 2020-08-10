@@ -128,12 +128,12 @@ jobs:
     environment:
       SEMTAG: "beta"
     <<: *tag
-#  tag-candidate:
-#    docker:
-#      - image: circleci/python:3.7
-#    environment:
-#      SEMTAG: "candidate"
-#    <<: *tag
+  tag-candidate:
+    docker:
+      - image: circleci/python:3.7
+    environment:
+      SEMTAG: "candidate"
+    <<: *tag
   tag-final-major:
     docker:
       - image: circleci/python:3.7
