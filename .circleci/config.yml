@@ -347,6 +347,9 @@ workflows:
   publish:
     jobs:
       - publish:
+          filters:
+            branches:
+              only: master
       - approval-docker-major:
           type: approval
           filters:
