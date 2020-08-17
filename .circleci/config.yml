@@ -347,11 +347,6 @@ workflows:
   publish:
     jobs:
       - publish:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d*\.\d*\.\d*.*$/
       - approval-docker-major:
           type: approval
           filters:
