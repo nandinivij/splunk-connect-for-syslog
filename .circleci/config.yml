@@ -344,7 +344,6 @@ workflows:
 #      - tag-final-patch:
 #          requires:
 #            - approval-tag-final-patch
-
   publish:
     jobs:
       - publish:
