@@ -345,62 +345,62 @@ workflows:
 #          requires:
 #            - approval-tag-final-patch
 
-  publish:
-    jobs:
-      - publish:
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d*\.\d*\.\d*.*$/
-      - approval-docker-major:
-          type: approval
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d*\.\d*\.\d*$/
-          requires:
-            - publish
-      - docker-major:
-          requires:
-            - approval-docker-major
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d*\.\d*\.\d*$/
-      - approval-docker-minor:
-          type: approval
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d*\.\d*\.\d*$/
-          requires:
-            - publish
-      - docker-minor:
-          requires:
-            - approval-docker-minor
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d*\.\d*\.\d*$/
-      - approval-docker-latest:
-          type: approval
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d*\.\d*\.\d*$/
-          requires:
-            - publish
-      - docker-latest:
-          requires:
-            - approval-docker-latest
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v\d*\.\d*\.\d*$/
+    publish:
+      jobs:
+        - publish:
+            filters:
+              branches:
+                ignore: /.*/
+              tags:
+                only: /^v\d*\.\d*\.\d*.*$/
+        - approval-docker-major:
+            type: approval
+            filters:
+              branches:
+                ignore: /.*/
+              tags:
+                only: /^v\d*\.\d*\.\d*$/
+            requires:
+              - publish
+        - docker-major:
+            requires:
+              - approval-docker-major
+            filters:
+              branches:
+                ignore: /.*/
+              tags:
+                only: /^v\d*\.\d*\.\d*$/
+        - approval-docker-minor:
+            type: approval
+            filters:
+              branches:
+                ignore: /.*/
+              tags:
+                only: /^v\d*\.\d*\.\d*$/
+            requires:
+              - publish
+        - docker-minor:
+            requires:
+              - approval-docker-minor
+            filters:
+              branches:
+                ignore: /.*/
+              tags:
+                only: /^v\d*\.\d*\.\d*$/
+        - approval-docker-latest:
+            type: approval
+            filters:
+              branches:
+                ignore: /.*/
+              tags:
+                only: /^v\d*\.\d*\.\d*$/
+            requires:
+              - publish
+        - docker-latest:
+            requires:
+              - approval-docker-latest
+            filters:
+              branches:
+                ignore: /.*/
+              tags:
+                only: /^v\d*\.\d*\.\d*$/
