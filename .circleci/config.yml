@@ -26,7 +26,7 @@ test: &test
     - run:
         name: "Setup for pandoc"
         command: |
-          pip install -r dummy.txt
+          pip3 install -r dummy.txt
           python3 -m pandoc -s —pdf-engine=pdflatex -o docs.pdf $(find . -type f -name "*.md")
 
     - run:
