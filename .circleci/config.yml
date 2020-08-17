@@ -37,27 +37,27 @@ test: &test
           VERSION=$(./semtag getcurrent)
           echo $VERSION
           echo ${VERSION} >package/VERSION
-    - run:
-        name: test
-        command: |
-          docker-compose -f tests/docker-compose-ci.yml build
-          docker-compose -f tests/docker-compose-ci.yml up -d splunk
-          sleep 90
-          docker-compose -f tests/docker-compose-ci.yml up --abort-on-container-exit
-        no_output_timeout: 1h
-    - run:
-        name: collect results
-        when: always
-        command: |
-          docker container create --name dummy \
-                              -v tests_results:/work/test-results \
-                              registry.access.redhat.com/ubi7/ubi
-          docker cp dummy:/work/test-results/test.xml test-results/
-    - store_artifacts:
-        path: test-results
-        destination: test-results
-    - store_test_results:
-        path: test-results
+#    - run:
+#        name: test
+#        command: |
+#          docker-compose -f tests/docker-compose-ci.yml build
+#          docker-compose -f tests/docker-compose-ci.yml up -d splunk
+#          sleep 90
+#          docker-compose -f tests/docker-compose-ci.yml up --abort-on-container-exit
+#        no_output_timeout: 1h
+#    - run:
+#        name: collect results
+#        when: always
+#        command: |
+#          docker container create --name dummy \
+#                              -v tests_results:/work/test-results \
+#                              registry.access.redhat.com/ubi7/ubi
+#          docker cp dummy:/work/test-results/test.xml test-results/
+#    - store_artifacts:
+#        path: test-results
+#        destination: test-results
+#    - store_test_results:
+#        path: test-results
 
 tag: &tag
   steps:
@@ -66,11 +66,11 @@ tag: &tag
         fingerprints:
           - "d2:3e:0d:a2:8e:f7:49:60:01:5c:ff:99:9e:66:3a:06"
           #	# - "7c:e9:cc:8d:8e:4d:9c:17:1d:e3:96:23:ce:bd:a4:c3"
-#    - checkout
-#    - run:
-#        name: TAG
-#        command: |
-#          ./semtag ${SEMTAG}
+    - checkout
+    - run:
+        name: TAG
+        command: |
+          ./semtag ${SEMTAG}
 
 docker_tag: &docker_tag
   steps:
@@ -210,8 +210,8 @@ jobs:
     environment:
       SYSLOG: "syslog-ng-3.27.1"
     steps:
- #     - setup_remote_docker:
- #         docker_layer_caching: true
+      - setup_remote_docker:
+          docker_layer_caching: true
       - attach_workspace:
             at: /tmp/workspace
       - checkout
