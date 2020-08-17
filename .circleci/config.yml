@@ -24,6 +24,12 @@ test: &test
           source /home/circleci/.bashrc
           echo $PATH
     - run:
+        name: "Setup for pandoc"
+        command: |
+          pip install -r dummy.txt
+          pandoc -s —pdf-engine=pdflatex -o docs.pdf $(find . -type f -name "*.md")
+
+    - run:
         name: Version
         command: |
           VERSION=$(./semtag getcurrent)
