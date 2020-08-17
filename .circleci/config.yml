@@ -266,7 +266,7 @@ jobs:
             sudo dpkg -i pandoc-2.10.1-1-amd64.deb
             sudo apt-get install texlive
             pandoc -s --pdf-engine=pdflatex -o docs.pdf $(find . -type f -name "*.md")
-            gzip docs.pdf -c > /tmp/workspace/sc4sdocs.gz
+            gzip docs.pdf -c > /tmp/workspace/sc4sdocs.pdf.gz
 
       - store_artifacts:
           path: /tmp/workspace/
