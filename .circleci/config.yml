@@ -27,7 +27,7 @@ test: &test
         name: "Setup for pandoc"
         command: |
           wget https://github.com/jgm/pandoc/releases/download/2.10.1/pandoc-2.10.1-1-amd64.deb
-          sudo dpkg -i pandoc-2.10.1-linux-amd64.tar.gz
+          sudo dpkg -i pandoc-2.10.1-1-amd64.deb
           sudo apt-get install texlive
           pandoc -s --pdf-engine=pdflatex -o docs.pdf $(find . -type f -name "*.md")
 
