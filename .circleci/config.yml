@@ -20,16 +20,15 @@ test: &test
         command: |
           pip install -r tests/requirements.txt
           mkdir test-results
-          echo 'export PATH=$HOME/nandini/:$PATH' >> $BASH_ENV
+          echo 'export PATH=$HOME:$PATH' >> $BASH_ENV
           source /home/circleci/.bashrc
           echo $PATH
-          echo $(which pandoc)
-#    - run:
-#        name: Setup for dummy
-#        command: |
-#          echo $BASH_ENV
-#          pip install -r dummy.txt
-#          pandoc -s —pdf-engine=pdflatex -o docs.pdf $(find . -type f -name "*.md")
+    - run:
+        name: Setup for dummy
+        command: |
+          echo $BASH_ENV
+          pip install -r dummy.txt
+          pandoc -s —pdf-engine=pdflatex -o docs.pdf $(find . -type f -name "*.md")
     - run:
         name: Version
         command: |
