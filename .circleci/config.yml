@@ -26,8 +26,10 @@ test: &test
     - run:
         name: "Setup for pandoc"
         command: |
-          pip3 install -r dummy.txt
-          python3 -m pandoc -s —pdf-engine=pdflatex -o docs.pdf $(find . -type f -name "*.md")
+          wget https://github.com/jgm/pandoc/releases/download/2.10.1/pandoc-2.10.1-1-amd64.deb
+          sudo dpkg -i pandoc-2.10.1-linux-amd64.tar.gz
+          sudo apt-get install texlive
+          pandoc -s --pdf-engine=pdflatex -o docs.pdf $(find . -type f -name "*.md")
 
     - run:
         name: Version
