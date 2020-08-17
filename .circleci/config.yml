@@ -319,10 +319,10 @@ workflows:
 #          filters:
 #            branches:
 #              only: develop
-#      - tag-candidate:
-#          filters:
-#            branches:
-#              only: master
+      - tag-candidate:
+          filters:
+            branches:
+              only: master
 #      - approval-tag-final-major:
 #          type: approval
 #          requires:
